@@ -51,8 +51,8 @@ Reflected in conference.py
 sessions = Session.query(Session.typeOfSession == SessionType.WORKSHOP)
 
 # get all sessions holding in a conference
-confs = Conference.query(Conference.name=="CONFERENCE NAME")
-sessions = [Session.query(ancestor=conf.key) for conf in confs]
+conf = Conference.query().filter(Conference.name=="CONFERENCE NAME")
+sessions = Session.query(ancestor=conf.key)
 ```
 
 ## Solve the following query related problem
