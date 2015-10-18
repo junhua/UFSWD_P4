@@ -60,9 +60,8 @@ sessions = [Session.query(ancestor=conf.key) for conf in confs]
 Let’s say that you don't like workshops and you don't like sessions after 7 pm. How would you handle a query for all non-workshop sessions before 7 pm? What is the problem for implementing this query? What ways to solve it did you think of?
 
 ```python
-# pseudo code
-session.query().filter(Session.startTime<19).\		# earlier than 19:00
-				filter(-Session.typeOfSession.IN([SessionType.WORKSHOP]))
+# pseudo code: Earlier than 19:00, not workshop
+session.query().filter(Session.startTime<19).filter(~Session.typeOfSession.IN([SessionType.WORKSHOP]))
 ```
 
 ## Task 4:
